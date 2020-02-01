@@ -6,12 +6,13 @@ from .serializers import MovieSerailizers, RatingSerailizers, UsersSerailizers
 from rest_framework.decorators import action
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UsersSerailizers
+    permission_classes = (AllowAny,)
 
 
 class MovieViewSet(viewsets.ModelViewSet):
